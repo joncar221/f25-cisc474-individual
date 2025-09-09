@@ -1,1 +1,1 @@
-[Link to glove svg](./globe.svg)
+[Link to site map](./sitemap.png)
