@@ -1,0 +1,13 @@
+.LinkBar {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content:space-around;
+    align-items:center;
+}
+
+.LinkBar .link {
+    background-color: rgb(47, 47, 224);
+    color: white;
+    padding: 5px;
+}
