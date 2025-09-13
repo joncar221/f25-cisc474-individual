@@ -6,7 +6,7 @@ export default function HomeLayout({
     children: React.ReactNode
 }) {
     return (
-        <div>
+        <div className='content'>
             <div className='LinkBar'>
                 <div className='link'>
                     <Link href='/home'>HomePage</Link>
@@ -16,6 +16,9 @@ export default function HomeLayout({
                 </div>
                 <div className='link'>
                     <Link href='/home/assignments'>Assignments</Link>
+                </div>
+                <div className='link'>
+                    <Link href='/home/inbox'>Inbox</Link>
                 </div>
                 <div className='link'>
                     <Link href='/'>Log Out</Link>

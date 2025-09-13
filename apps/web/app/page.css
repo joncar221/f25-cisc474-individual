@@ -1,0 +1,30 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 90vh;
+    flex-wrap: wrap;
+}
+
+h1 {
+    background-color: rgb(80, 80, 80);
+    color: white;
+    padding: 5px;
+    width: fit-content;
+}
+
+.loginField {
+    height: 40%;
+}
+.loginButton {
+    background-color: rgb(80, 80, 80);
+    color: white;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 4px;
+
+    width: fit-content;
+
+}
