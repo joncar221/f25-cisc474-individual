@@ -25,7 +25,7 @@ export default function Home() {
                 <h1>CISC474 Project Starter</h1>
                 <ol>
                     <li>
-                        Get started by editing{" "}
+                        Hello{" "}
                         <code>apps/web/app/page.tsx</code>
                     </li>
                     <li>Save and see your changes instantly.</li>
