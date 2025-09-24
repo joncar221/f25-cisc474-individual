@@ -17,7 +17,7 @@ model User {
   name          String?
   email         String?   @unique
   emailVerified DateTime?
-  role          Role      @default(USER)
+  role          Role
   courses       Course[]
 }
 
@@ -28,4 +28,10 @@ model Course {
   instructor    User     @relation(fields: [instructorId], references: [id])
   instructorId  String
   assignments   Assignment[]
+}
+
+model Role {
+  STUDENT
+  INSTRUCTOR
+  ADMIN
 }
