@@ -13,24 +13,56 @@ generator client {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  role          Role
-  courses       Course[]
+  id                String           @id @default(cuid())
+  name              String?
+  email             String?          @unique
+  emailVerified     DateTime?
+  role              Role             @default(STUDENT)
+  courses           Course[]         @relation("Instructors")
+  registeredCourses Registered[]
+  submissions       Submission[]
 }
 
 model Course {
-  id            String    @id @default(cuid())
-  title         String
+  id            String        @id @default(cuid())
+  title         String        @unique
   description   String?
-  instructor    User     @relation(fields: [instructorId], references: [id])
-  instructorId  String
   assignments   Assignment[]
+  instructor    User?         @relation("Instructors", fields: [instructorId], references: [id])
+  instructorId  String?
+  students      Registered[]
 }
 
-model Role {
+model Registered {
+  id            String         @id @default(cuid())
+  student       User?          @relation(fields: [studentId], references: [id])
+  studentId     String?
+  course        Course?        @relation(fields: [courseId], references: [id])
+  courseId      String?
+}
+
+model Assignment {
+  id          String          @id @default(cuid())
+  title       String          @unique
+  description String?
+  submissions Submission[]
+  course      Course          @relation(fields: [courseId], references: [id])
+  courseId    String
+}
+
+model Submission {
+  id          String  @id @default(cuid())
+  title       String  @unique
+  submission  String
+  grade       Int
+  feedback    String?
+  assignment  Assignment  @relation(fields: [assignmentId], references: [id])
+  assignmentId  String
+  student       User?          @relation(fields: [studentId], references: [id])
+  studentId     String?
+}
+
+enum Role {
   STUDENT
   INSTRUCTOR
   ADMIN
