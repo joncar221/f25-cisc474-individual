@@ -10,33 +10,89 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HomePageRouteImport } from './routes/home/page'
+import { Route as HomeInboxPageRouteImport } from './routes/home/inbox/page'
+import { Route as HomeCoursesPageRouteImport } from './routes/home/courses/page'
+import { Route as HomeAssignmentsPageRouteImport } from './routes/home/assignments/page'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HomePageRoute = HomePageRouteImport.update({
+  id: '/home/page',
+  path: '/home/page',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeInboxPageRoute = HomeInboxPageRouteImport.update({
+  id: '/home/inbox/page',
+  path: '/home/inbox/page',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeCoursesPageRoute = HomeCoursesPageRouteImport.update({
+  id: '/home/courses/page',
+  path: '/home/courses/page',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeAssignmentsPageRoute = HomeAssignmentsPageRouteImport.update({
+  id: '/home/assignments/page',
+  path: '/home/assignments/page',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/home/page': typeof HomePageRoute
+  '/home/assignments/page': typeof HomeAssignmentsPageRoute
+  '/home/courses/page': typeof HomeCoursesPageRoute
+  '/home/inbox/page': typeof HomeInboxPageRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/home/page': typeof HomePageRoute
+  '/home/assignments/page': typeof HomeAssignmentsPageRoute
+  '/home/courses/page': typeof HomeCoursesPageRoute
+  '/home/inbox/page': typeof HomeInboxPageRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/home/page': typeof HomePageRoute
+  '/home/assignments/page': typeof HomeAssignmentsPageRoute
+  '/home/courses/page': typeof HomeCoursesPageRoute
+  '/home/inbox/page': typeof HomeInboxPageRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/home/page'
+    | '/home/assignments/page'
+    | '/home/courses/page'
+    | '/home/inbox/page'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/home/page'
+    | '/home/assignments/page'
+    | '/home/courses/page'
+    | '/home/inbox/page'
+  id:
+    | '__root__'
+    | '/'
+    | '/home/page'
+    | '/home/assignments/page'
+    | '/home/courses/page'
+    | '/home/inbox/page'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HomePageRoute: typeof HomePageRoute
+  HomeAssignmentsPageRoute: typeof HomeAssignmentsPageRoute
+  HomeCoursesPageRoute: typeof HomeCoursesPageRoute
+  HomeInboxPageRoute: typeof HomeInboxPageRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +104,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/home/page': {
+      id: '/home/page'
+      path: '/home/page'
+      fullPath: '/home/page'
+      preLoaderRoute: typeof HomePageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home/inbox/page': {
+      id: '/home/inbox/page'
+      path: '/home/inbox/page'
+      fullPath: '/home/inbox/page'
+      preLoaderRoute: typeof HomeInboxPageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home/courses/page': {
+      id: '/home/courses/page'
+      path: '/home/courses/page'
+      fullPath: '/home/courses/page'
+      preLoaderRoute: typeof HomeCoursesPageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home/assignments/page': {
+      id: '/home/assignments/page'
+      path: '/home/assignments/page'
+      fullPath: '/home/assignments/page'
+      preLoaderRoute: typeof HomeAssignmentsPageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HomePageRoute: HomePageRoute,
+  HomeAssignmentsPageRoute: HomeAssignmentsPageRoute,
+  HomeCoursesPageRoute: HomeCoursesPageRoute,
+  HomeInboxPageRoute: HomeInboxPageRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
