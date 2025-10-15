@@ -10,6 +10,7 @@ export class UsersService {
     }
 
     findOne(id: string) {
+        console.log("Looking for id:" + id);
         return this.prisma.user.findFirst({ where: { id }});
     }
 
