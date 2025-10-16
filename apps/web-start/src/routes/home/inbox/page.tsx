@@ -23,6 +23,9 @@ export default function Inbox() {
           <div className='link'>
               <Link to={'/'}>Log Out</Link>
           </div>
+          <div className='link'>
+              <Link to={'/home/backend/page'}>Backend</Link>
+          </div>
       </div>
     <div>Inbox</div>
   </div>

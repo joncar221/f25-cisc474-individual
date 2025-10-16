@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as HomePageRouteImport } from './routes/home/page'
 import { Route as HomeInboxPageRouteImport } from './routes/home/inbox/page'
 import { Route as HomeCoursesPageRouteImport } from './routes/home/courses/page'
+import { Route as HomeBackendPageRouteImport } from './routes/home/backend/page'
 import { Route as HomeAssignmentsPageRouteImport } from './routes/home/assignments/page'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +36,11 @@ const HomeCoursesPageRoute = HomeCoursesPageRouteImport.update({
   path: '/home/courses/page',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HomeBackendPageRoute = HomeBackendPageRouteImport.update({
+  id: '/home/backend/page',
+  path: '/home/backend/page',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HomeAssignmentsPageRoute = HomeAssignmentsPageRouteImport.update({
   id: '/home/assignments/page',
   path: '/home/assignments/page',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/home/page': typeof HomePageRoute
   '/home/assignments/page': typeof HomeAssignmentsPageRoute
+  '/home/backend/page': typeof HomeBackendPageRoute
   '/home/courses/page': typeof HomeCoursesPageRoute
   '/home/inbox/page': typeof HomeInboxPageRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/home/page': typeof HomePageRoute
   '/home/assignments/page': typeof HomeAssignmentsPageRoute
+  '/home/backend/page': typeof HomeBackendPageRoute
   '/home/courses/page': typeof HomeCoursesPageRoute
   '/home/inbox/page': typeof HomeInboxPageRoute
 }
@@ -60,6 +68,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/home/page': typeof HomePageRoute
   '/home/assignments/page': typeof HomeAssignmentsPageRoute
+  '/home/backend/page': typeof HomeBackendPageRoute
   '/home/courses/page': typeof HomeCoursesPageRoute
   '/home/inbox/page': typeof HomeInboxPageRoute
 }
@@ -69,6 +78,7 @@ export interface FileRouteTypes {
     | '/'
     | '/home/page'
     | '/home/assignments/page'
+    | '/home/backend/page'
     | '/home/courses/page'
     | '/home/inbox/page'
   fileRoutesByTo: FileRoutesByTo
@@ -76,6 +86,7 @@ export interface FileRouteTypes {
     | '/'
     | '/home/page'
     | '/home/assignments/page'
+    | '/home/backend/page'
     | '/home/courses/page'
     | '/home/inbox/page'
   id:
@@ -83,6 +94,7 @@ export interface FileRouteTypes {
     | '/'
     | '/home/page'
     | '/home/assignments/page'
+    | '/home/backend/page'
     | '/home/courses/page'
     | '/home/inbox/page'
   fileRoutesById: FileRoutesById
@@ -91,6 +103,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomePageRoute: typeof HomePageRoute
   HomeAssignmentsPageRoute: typeof HomeAssignmentsPageRoute
+  HomeBackendPageRoute: typeof HomeBackendPageRoute
   HomeCoursesPageRoute: typeof HomeCoursesPageRoute
   HomeInboxPageRoute: typeof HomeInboxPageRoute
 }
@@ -125,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeCoursesPageRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/home/backend/page': {
+      id: '/home/backend/page'
+      path: '/home/backend/page'
+      fullPath: '/home/backend/page'
+      preLoaderRoute: typeof HomeBackendPageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/home/assignments/page': {
       id: '/home/assignments/page'
       path: '/home/assignments/page'
@@ -139,6 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomePageRoute: HomePageRoute,
   HomeAssignmentsPageRoute: HomeAssignmentsPageRoute,
+  HomeBackendPageRoute: HomeBackendPageRoute,
   HomeCoursesPageRoute: HomeCoursesPageRoute,
   HomeInboxPageRoute: HomeInboxPageRoute,
 }

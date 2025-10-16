@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 
-export const Route = createFileRoute('/home/courses/page')({
-  component: Courses,
+export const Route = createFileRoute('/home/backend/page')({
+  component: Backend,
 });
 
 
-export default function Courses() {
+export default function Backend() {
     return (
         <div className='content'>
       <div className='LinkBar'>
@@ -28,7 +28,7 @@ export default function Courses() {
               <Link to={'/home/backend/page'}>Backend</Link>
           </div>
       </div>
-    <div>Courses</div>
+    <div>Backend</div>
   </div>
     );
 }

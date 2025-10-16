@@ -25,6 +25,9 @@ export default function Login() {
           <div className='link'>
               <Link to={'/'}>Log Out</Link>
           </div>
+          <div className='link'>
+              <Link to={'/home/backend/page'}>Backend</Link>
+          </div>
       </div>
 
   </div>
