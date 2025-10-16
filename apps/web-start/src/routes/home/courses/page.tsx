@@ -11,6 +11,7 @@ export const Route = createFileRoute('/home/courses/page')({
 interface Course {
     id: string;
     title: string;
+    description: string;
 }
 
 
@@ -45,6 +46,7 @@ async function CourseList() {
             <ul>
                 {courses.map((course: any) => (
                     <li key={course.id}>
+                        <div>{course.description}</div>
                         <div>{course.title}</div><br></br>
                     </li>
                 ))}

@@ -6,8 +6,12 @@ async function bootstrap() {
   const port = process.env.PORT || 3000;
   const host = process.env.HOST || undefined;
 
+  const origins = process.env.CLIENT_ORIGINS 
+    ? process.env.CLIENT_ORIGINS.split(',').map((origin) => origin.trim()) 
+    : ['http://localhost:3001', 'http://localhost:3002'];
+
   app.enableCors({
-    origin: [process.env.FRONTEND_URL],
+    origin: origins,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   });

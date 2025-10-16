@@ -47,7 +47,7 @@ async function UserList() {
 
     return (
             <ul>
-                {users.map((user: any) => (
+                {users.map((user) => (
                     <li key={user.id}>
                         <div>{user.name}</div>
                         <div>{user.email}</div>
