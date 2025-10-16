@@ -1,0 +1,17 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.link {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+}
