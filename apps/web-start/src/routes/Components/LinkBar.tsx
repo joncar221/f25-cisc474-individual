@@ -7,19 +7,19 @@ function LinkBar() {
                       <Link to={'/home'}>HomePage</Link>
                   </div>
                   <div className='link'>
-                      <Link to={'/home/courses/page'}>Courses</Link>
+                      <Link to={'/dashboard/courses/page'}>Courses</Link>
                   </div>
                   <div className='link'>
-                      <Link to={'/home/assignments/page'}>Assignments</Link>
+                      <Link to={'/dashboard/assignments/page'}>Assignments</Link>
                   </div>
                   <div className='link'>
-                      <Link to={'/home/inbox/page'}>Inbox</Link>
+                      <Link to={'/dashboard/inbox/page'}>Inbox</Link>
                   </div>
                   <div className='link'>
                       <Link to={'/'}>Log Out</Link>
                   </div>
                   <div className='link'>
-                      <Link to={'/home/backend/page'}>Backend</Link>
+                      <Link to={'/dashboard/backend/page'}>Backend</Link>
                   </div>
               </div>
     );

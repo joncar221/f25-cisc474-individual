@@ -12,7 +12,7 @@ const coursesQueryOptions = {
     initialData: [],
   };
   
-  export const Route = createFileRoute('/home/courses/page')({
+  export const Route = createFileRoute('/dashboard/courses/page')({
     component: Courses,
     loader: ({ context: { queryClient } }) =>
       queryClient.ensureQueryData(coursesQueryOptions),
@@ -35,9 +35,9 @@ async function CourseList() {
                         <br></br>
                         <div>{course.title}</div>
                         <div>{course.description}</div>
-                        <Link to="/home/courses/edit/$courseId" params={{courseId: course.id}} className='changeButton'> Edit Course</Link>
+                        <Link to="/dashboard/courses/edit/$courseId" params={{courseId: course.id}} className='changeButton'> Edit Course</Link>
                         
-                        <Link to="/home/courses/delete/$courseId" params={{courseId: course.id}} className='changeButton'> Delete Course</Link>
+                        <Link to="/dashboard/courses/delete/$courseId" params={{courseId: course.id}} className='changeButton'> Delete Course</Link>
                         
                         
                     </li>
@@ -53,7 +53,7 @@ export default function Courses() {
             <div className='main'>
                 
                 <div>Courses</div>
-                <Link to="/home/courses/create" className='createButton'>Create a New Course</Link>
+                <Link to="/dashboard/courses/create" className='createButton'>Create a New Course</Link>
                 
                 <Suspense fallback={<h1>Loading Courses...</h1>}>
                 <CourseList />

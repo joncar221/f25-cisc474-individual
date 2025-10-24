@@ -2,7 +2,7 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import { useAuth0 } from '@auth0/auth0-react';
 import LinkBar from './Components/LinkBar';
 import './page.css';
-import './home/layout.css';
+import './dashboard/layout.css';
 
 export const Route = createFileRoute('/home')({
   component: RouteComponent,

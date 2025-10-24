@@ -2,7 +2,7 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import LinkBar from '../../Components/LinkBar';
 import './page.css';
 
-export const Route = createFileRoute('/home/backend/page')({
+export const Route = createFileRoute('/dashboard/backend/page')({
   component: Backend,
 });
 
@@ -14,10 +14,10 @@ export default function Backend() {
             <div className='main'>
                 <div>Backend</div>
                 <div className='link'>
-                    <Link to={'/home/courses/page'}>Courses Data</Link>
+                    <Link to={'/dashboard/courses/page'}>Courses Data</Link>
                 </div>
                 <div className='link'>
-                    <Link to={'/home/users/page'}>Users Data</Link>
+                    <Link to={'/dashboard/users/page'}>Users Data</Link>
                 </div>
             </div>
         </div>

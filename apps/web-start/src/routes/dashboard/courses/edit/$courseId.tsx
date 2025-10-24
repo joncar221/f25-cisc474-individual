@@ -4,12 +4,12 @@ import { CourseUpdateIn, CourseOut } from '@repo/api';
 import { useState } from 'react';
 import { backendFetcher, mutateBackend } from '../../../../integrations/fetcher';
 
-export const Route = createFileRoute('/home/courses/edit/$courseId')({
+export const Route = createFileRoute('/dashboard/courses/edit/$courseId')({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  const {courseId} = useParams({ from: '/home/courses/edit/$courseId'});
+  const {courseId} = useParams({ from: '/dashboard/courses/edit/$courseId'});
   const [newName, setNewName] = useState('');
   const [newDescription, setNewDescription] = useState('');
   const [newInstructorId, setNewInstructorId] = useState(
@@ -83,7 +83,7 @@ function RouteComponent() {
           </div>
           <hr></hr>
           <div className='changeButton'>
-            <a href="/home/courses/page">Back to Courses</a>
+            <a href="/dashboard/courses/page">Back to Courses</a>
           </div>
         </>
       )}

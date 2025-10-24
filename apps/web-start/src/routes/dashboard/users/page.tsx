@@ -4,7 +4,7 @@ import { Suspense, useState, useEffect } from 'react';
 import './page.css';
 import { backendFetcher } from '../../../integrations/fetcher';
 
-export const Route = createFileRoute('/home/users/page')({
+export const Route = createFileRoute('/dashboard/users/page')({
   component: Users,
 });
 

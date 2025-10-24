@@ -4,7 +4,7 @@ import { CourseCreateIn, CourseOut } from '@repo/api';
 import { useState } from 'react';
 import { backendFetcher, mutateBackend } from '../../../integrations/fetcher';
 
-export const Route = createFileRoute('/home/courses/create')({
+export const Route = createFileRoute('/dashboard/courses/create')({
   component: RouteComponent,
 });
 
@@ -82,7 +82,7 @@ function RouteComponent() {
           </div>
           <hr></hr>
           <div>
-            <a href="/home/courses/page">Back to Courses</a>
+            <a href="/dashboard/courses/page">Back to Courses</a>
           </div>
         </>
       )}

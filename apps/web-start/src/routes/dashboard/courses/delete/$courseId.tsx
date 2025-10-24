@@ -4,12 +4,12 @@ import { CourseCreateIn, CourseOut } from '@repo/api';
 import { useState } from 'react';
 import { backendFetcher, mutateBackend } from '../../../../integrations/fetcher';
 
-export const Route = createFileRoute('/home/courses/delete/$courseId')({
+export const Route = createFileRoute('/dashboard/courses/delete/$courseId')({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  const {courseId} = useParams({ from: '/home/courses/delete/$courseId'});
+  const {courseId} = useParams({ from: '/dashboard/courses/delete/$courseId'});
 
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ function RouteComponent() {
     mutationFn: () => mutateBackend(`/courses/${courseId}`, 'DELETE'),
     onSuccess: () => {
       queryClient.invalidateQueries({queryKey: ['courses']});
-      navigate({to: '/home/courses/page'});
+      navigate({to: '/dashboard/courses/page'});
     },
   });
 
@@ -36,7 +36,7 @@ function RouteComponent() {
             </button>
           <hr></hr>
           <div className='changeButton'>
-            <a href="/home/courses/page">Back to Courses</a>
+            <a href="/dashboard/courses/page">Back to Courses</a>
           </div>
           {mutation.isPending && <h1>Deleting...</h1>}
           {mutation.isError && <h1>Error when deleting this course.</h1>}

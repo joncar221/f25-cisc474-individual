@@ -11,14 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as HomeUsersPageRouteImport } from './routes/home/users/page'
-import { Route as HomeInboxPageRouteImport } from './routes/home/inbox/page'
-import { Route as HomeCoursesPageRouteImport } from './routes/home/courses/page'
-import { Route as HomeCoursesCreateRouteImport } from './routes/home/courses/create'
-import { Route as HomeBackendPageRouteImport } from './routes/home/backend/page'
-import { Route as HomeAssignmentsPageRouteImport } from './routes/home/assignments/page'
-import { Route as HomeCoursesEditCourseIdRouteImport } from './routes/home/courses/edit/$courseId'
-import { Route as HomeCoursesDeleteCourseIdRouteImport } from './routes/home/courses/delete/$courseId'
+import { Route as DashboardUsersPageRouteImport } from './routes/dashboard/users/page'
+import { Route as DashboardInboxPageRouteImport } from './routes/dashboard/inbox/page'
+import { Route as DashboardCoursesPageRouteImport } from './routes/dashboard/courses/page'
+import { Route as DashboardCoursesCreateRouteImport } from './routes/dashboard/courses/create'
+import { Route as DashboardBackendPageRouteImport } from './routes/dashboard/backend/page'
+import { Route as DashboardAssignmentsPageRouteImport } from './routes/dashboard/assignments/page'
+import { Route as DashboardCoursesEditCourseIdRouteImport } from './routes/dashboard/courses/edit/$courseId'
+import { Route as DashboardCoursesDeleteCourseIdRouteImport } from './routes/dashboard/courses/delete/$courseId'
 
 const HomeRoute = HomeRouteImport.update({
   id: '/home',
@@ -30,127 +30,137 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HomeUsersPageRoute = HomeUsersPageRouteImport.update({
-  id: '/users/page',
-  path: '/users/page',
-  getParentRoute: () => HomeRoute,
+const DashboardUsersPageRoute = DashboardUsersPageRouteImport.update({
+  id: '/dashboard/users/page',
+  path: '/dashboard/users/page',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const HomeInboxPageRoute = HomeInboxPageRouteImport.update({
-  id: '/inbox/page',
-  path: '/inbox/page',
-  getParentRoute: () => HomeRoute,
+const DashboardInboxPageRoute = DashboardInboxPageRouteImport.update({
+  id: '/dashboard/inbox/page',
+  path: '/dashboard/inbox/page',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const HomeCoursesPageRoute = HomeCoursesPageRouteImport.update({
-  id: '/courses/page',
-  path: '/courses/page',
-  getParentRoute: () => HomeRoute,
+const DashboardCoursesPageRoute = DashboardCoursesPageRouteImport.update({
+  id: '/dashboard/courses/page',
+  path: '/dashboard/courses/page',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const HomeCoursesCreateRoute = HomeCoursesCreateRouteImport.update({
-  id: '/courses/create',
-  path: '/courses/create',
-  getParentRoute: () => HomeRoute,
+const DashboardCoursesCreateRoute = DashboardCoursesCreateRouteImport.update({
+  id: '/dashboard/courses/create',
+  path: '/dashboard/courses/create',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const HomeBackendPageRoute = HomeBackendPageRouteImport.update({
-  id: '/backend/page',
-  path: '/backend/page',
-  getParentRoute: () => HomeRoute,
+const DashboardBackendPageRoute = DashboardBackendPageRouteImport.update({
+  id: '/dashboard/backend/page',
+  path: '/dashboard/backend/page',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const HomeAssignmentsPageRoute = HomeAssignmentsPageRouteImport.update({
-  id: '/assignments/page',
-  path: '/assignments/page',
-  getParentRoute: () => HomeRoute,
-} as any)
-const HomeCoursesEditCourseIdRoute = HomeCoursesEditCourseIdRouteImport.update({
-  id: '/courses/edit/$courseId',
-  path: '/courses/edit/$courseId',
-  getParentRoute: () => HomeRoute,
-} as any)
-const HomeCoursesDeleteCourseIdRoute =
-  HomeCoursesDeleteCourseIdRouteImport.update({
-    id: '/courses/delete/$courseId',
-    path: '/courses/delete/$courseId',
-    getParentRoute: () => HomeRoute,
+const DashboardAssignmentsPageRoute =
+  DashboardAssignmentsPageRouteImport.update({
+    id: '/dashboard/assignments/page',
+    path: '/dashboard/assignments/page',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DashboardCoursesEditCourseIdRoute =
+  DashboardCoursesEditCourseIdRouteImport.update({
+    id: '/dashboard/courses/edit/$courseId',
+    path: '/dashboard/courses/edit/$courseId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DashboardCoursesDeleteCourseIdRoute =
+  DashboardCoursesDeleteCourseIdRouteImport.update({
+    id: '/dashboard/courses/delete/$courseId',
+    path: '/dashboard/courses/delete/$courseId',
+    getParentRoute: () => rootRouteImport,
   } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/home': typeof HomeRouteWithChildren
-  '/home/assignments/page': typeof HomeAssignmentsPageRoute
-  '/home/backend/page': typeof HomeBackendPageRoute
-  '/home/courses/create': typeof HomeCoursesCreateRoute
-  '/home/courses/page': typeof HomeCoursesPageRoute
-  '/home/inbox/page': typeof HomeInboxPageRoute
-  '/home/users/page': typeof HomeUsersPageRoute
-  '/home/courses/delete/$courseId': typeof HomeCoursesDeleteCourseIdRoute
-  '/home/courses/edit/$courseId': typeof HomeCoursesEditCourseIdRoute
+  '/home': typeof HomeRoute
+  '/dashboard/assignments/page': typeof DashboardAssignmentsPageRoute
+  '/dashboard/backend/page': typeof DashboardBackendPageRoute
+  '/dashboard/courses/create': typeof DashboardCoursesCreateRoute
+  '/dashboard/courses/page': typeof DashboardCoursesPageRoute
+  '/dashboard/inbox/page': typeof DashboardInboxPageRoute
+  '/dashboard/users/page': typeof DashboardUsersPageRoute
+  '/dashboard/courses/delete/$courseId': typeof DashboardCoursesDeleteCourseIdRoute
+  '/dashboard/courses/edit/$courseId': typeof DashboardCoursesEditCourseIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/home': typeof HomeRouteWithChildren
-  '/home/assignments/page': typeof HomeAssignmentsPageRoute
-  '/home/backend/page': typeof HomeBackendPageRoute
-  '/home/courses/create': typeof HomeCoursesCreateRoute
-  '/home/courses/page': typeof HomeCoursesPageRoute
-  '/home/inbox/page': typeof HomeInboxPageRoute
-  '/home/users/page': typeof HomeUsersPageRoute
-  '/home/courses/delete/$courseId': typeof HomeCoursesDeleteCourseIdRoute
-  '/home/courses/edit/$courseId': typeof HomeCoursesEditCourseIdRoute
+  '/home': typeof HomeRoute
+  '/dashboard/assignments/page': typeof DashboardAssignmentsPageRoute
+  '/dashboard/backend/page': typeof DashboardBackendPageRoute
+  '/dashboard/courses/create': typeof DashboardCoursesCreateRoute
+  '/dashboard/courses/page': typeof DashboardCoursesPageRoute
+  '/dashboard/inbox/page': typeof DashboardInboxPageRoute
+  '/dashboard/users/page': typeof DashboardUsersPageRoute
+  '/dashboard/courses/delete/$courseId': typeof DashboardCoursesDeleteCourseIdRoute
+  '/dashboard/courses/edit/$courseId': typeof DashboardCoursesEditCourseIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/home': typeof HomeRouteWithChildren
-  '/home/assignments/page': typeof HomeAssignmentsPageRoute
-  '/home/backend/page': typeof HomeBackendPageRoute
-  '/home/courses/create': typeof HomeCoursesCreateRoute
-  '/home/courses/page': typeof HomeCoursesPageRoute
-  '/home/inbox/page': typeof HomeInboxPageRoute
-  '/home/users/page': typeof HomeUsersPageRoute
-  '/home/courses/delete/$courseId': typeof HomeCoursesDeleteCourseIdRoute
-  '/home/courses/edit/$courseId': typeof HomeCoursesEditCourseIdRoute
+  '/home': typeof HomeRoute
+  '/dashboard/assignments/page': typeof DashboardAssignmentsPageRoute
+  '/dashboard/backend/page': typeof DashboardBackendPageRoute
+  '/dashboard/courses/create': typeof DashboardCoursesCreateRoute
+  '/dashboard/courses/page': typeof DashboardCoursesPageRoute
+  '/dashboard/inbox/page': typeof DashboardInboxPageRoute
+  '/dashboard/users/page': typeof DashboardUsersPageRoute
+  '/dashboard/courses/delete/$courseId': typeof DashboardCoursesDeleteCourseIdRoute
+  '/dashboard/courses/edit/$courseId': typeof DashboardCoursesEditCourseIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/home'
-    | '/home/assignments/page'
-    | '/home/backend/page'
-    | '/home/courses/create'
-    | '/home/courses/page'
-    | '/home/inbox/page'
-    | '/home/users/page'
-    | '/home/courses/delete/$courseId'
-    | '/home/courses/edit/$courseId'
+    | '/dashboard/assignments/page'
+    | '/dashboard/backend/page'
+    | '/dashboard/courses/create'
+    | '/dashboard/courses/page'
+    | '/dashboard/inbox/page'
+    | '/dashboard/users/page'
+    | '/dashboard/courses/delete/$courseId'
+    | '/dashboard/courses/edit/$courseId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/home'
-    | '/home/assignments/page'
-    | '/home/backend/page'
-    | '/home/courses/create'
-    | '/home/courses/page'
-    | '/home/inbox/page'
-    | '/home/users/page'
-    | '/home/courses/delete/$courseId'
-    | '/home/courses/edit/$courseId'
+    | '/dashboard/assignments/page'
+    | '/dashboard/backend/page'
+    | '/dashboard/courses/create'
+    | '/dashboard/courses/page'
+    | '/dashboard/inbox/page'
+    | '/dashboard/users/page'
+    | '/dashboard/courses/delete/$courseId'
+    | '/dashboard/courses/edit/$courseId'
   id:
     | '__root__'
     | '/'
     | '/home'
-    | '/home/assignments/page'
-    | '/home/backend/page'
-    | '/home/courses/create'
-    | '/home/courses/page'
-    | '/home/inbox/page'
-    | '/home/users/page'
-    | '/home/courses/delete/$courseId'
-    | '/home/courses/edit/$courseId'
+    | '/dashboard/assignments/page'
+    | '/dashboard/backend/page'
+    | '/dashboard/courses/create'
+    | '/dashboard/courses/page'
+    | '/dashboard/inbox/page'
+    | '/dashboard/users/page'
+    | '/dashboard/courses/delete/$courseId'
+    | '/dashboard/courses/edit/$courseId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  HomeRoute: typeof HomeRouteWithChildren
+  HomeRoute: typeof HomeRoute
+  DashboardAssignmentsPageRoute: typeof DashboardAssignmentsPageRoute
+  DashboardBackendPageRoute: typeof DashboardBackendPageRoute
+  DashboardCoursesCreateRoute: typeof DashboardCoursesCreateRoute
+  DashboardCoursesPageRoute: typeof DashboardCoursesPageRoute
+  DashboardInboxPageRoute: typeof DashboardInboxPageRoute
+  DashboardUsersPageRoute: typeof DashboardUsersPageRoute
+  DashboardCoursesDeleteCourseIdRoute: typeof DashboardCoursesDeleteCourseIdRoute
+  DashboardCoursesEditCourseIdRoute: typeof DashboardCoursesEditCourseIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -169,92 +179,76 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/home/users/page': {
-      id: '/home/users/page'
-      path: '/users/page'
-      fullPath: '/home/users/page'
-      preLoaderRoute: typeof HomeUsersPageRouteImport
-      parentRoute: typeof HomeRoute
+    '/dashboard/users/page': {
+      id: '/dashboard/users/page'
+      path: '/dashboard/users/page'
+      fullPath: '/dashboard/users/page'
+      preLoaderRoute: typeof DashboardUsersPageRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/home/inbox/page': {
-      id: '/home/inbox/page'
-      path: '/inbox/page'
-      fullPath: '/home/inbox/page'
-      preLoaderRoute: typeof HomeInboxPageRouteImport
-      parentRoute: typeof HomeRoute
+    '/dashboard/inbox/page': {
+      id: '/dashboard/inbox/page'
+      path: '/dashboard/inbox/page'
+      fullPath: '/dashboard/inbox/page'
+      preLoaderRoute: typeof DashboardInboxPageRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/home/courses/page': {
-      id: '/home/courses/page'
-      path: '/courses/page'
-      fullPath: '/home/courses/page'
-      preLoaderRoute: typeof HomeCoursesPageRouteImport
-      parentRoute: typeof HomeRoute
+    '/dashboard/courses/page': {
+      id: '/dashboard/courses/page'
+      path: '/dashboard/courses/page'
+      fullPath: '/dashboard/courses/page'
+      preLoaderRoute: typeof DashboardCoursesPageRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/home/courses/create': {
-      id: '/home/courses/create'
-      path: '/courses/create'
-      fullPath: '/home/courses/create'
-      preLoaderRoute: typeof HomeCoursesCreateRouteImport
-      parentRoute: typeof HomeRoute
+    '/dashboard/courses/create': {
+      id: '/dashboard/courses/create'
+      path: '/dashboard/courses/create'
+      fullPath: '/dashboard/courses/create'
+      preLoaderRoute: typeof DashboardCoursesCreateRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/home/backend/page': {
-      id: '/home/backend/page'
-      path: '/backend/page'
-      fullPath: '/home/backend/page'
-      preLoaderRoute: typeof HomeBackendPageRouteImport
-      parentRoute: typeof HomeRoute
+    '/dashboard/backend/page': {
+      id: '/dashboard/backend/page'
+      path: '/dashboard/backend/page'
+      fullPath: '/dashboard/backend/page'
+      preLoaderRoute: typeof DashboardBackendPageRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/home/assignments/page': {
-      id: '/home/assignments/page'
-      path: '/assignments/page'
-      fullPath: '/home/assignments/page'
-      preLoaderRoute: typeof HomeAssignmentsPageRouteImport
-      parentRoute: typeof HomeRoute
+    '/dashboard/assignments/page': {
+      id: '/dashboard/assignments/page'
+      path: '/dashboard/assignments/page'
+      fullPath: '/dashboard/assignments/page'
+      preLoaderRoute: typeof DashboardAssignmentsPageRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/home/courses/edit/$courseId': {
-      id: '/home/courses/edit/$courseId'
-      path: '/courses/edit/$courseId'
-      fullPath: '/home/courses/edit/$courseId'
-      preLoaderRoute: typeof HomeCoursesEditCourseIdRouteImport
-      parentRoute: typeof HomeRoute
+    '/dashboard/courses/edit/$courseId': {
+      id: '/dashboard/courses/edit/$courseId'
+      path: '/dashboard/courses/edit/$courseId'
+      fullPath: '/dashboard/courses/edit/$courseId'
+      preLoaderRoute: typeof DashboardCoursesEditCourseIdRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/home/courses/delete/$courseId': {
-      id: '/home/courses/delete/$courseId'
-      path: '/courses/delete/$courseId'
-      fullPath: '/home/courses/delete/$courseId'
-      preLoaderRoute: typeof HomeCoursesDeleteCourseIdRouteImport
-      parentRoute: typeof HomeRoute
+    '/dashboard/courses/delete/$courseId': {
+      id: '/dashboard/courses/delete/$courseId'
+      path: '/dashboard/courses/delete/$courseId'
+      fullPath: '/dashboard/courses/delete/$courseId'
+      preLoaderRoute: typeof DashboardCoursesDeleteCourseIdRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface HomeRouteChildren {
-  HomeAssignmentsPageRoute: typeof HomeAssignmentsPageRoute
-  HomeBackendPageRoute: typeof HomeBackendPageRoute
-  HomeCoursesCreateRoute: typeof HomeCoursesCreateRoute
-  HomeCoursesPageRoute: typeof HomeCoursesPageRoute
-  HomeInboxPageRoute: typeof HomeInboxPageRoute
-  HomeUsersPageRoute: typeof HomeUsersPageRoute
-  HomeCoursesDeleteCourseIdRoute: typeof HomeCoursesDeleteCourseIdRoute
-  HomeCoursesEditCourseIdRoute: typeof HomeCoursesEditCourseIdRoute
-}
-
-const HomeRouteChildren: HomeRouteChildren = {
-  HomeAssignmentsPageRoute: HomeAssignmentsPageRoute,
-  HomeBackendPageRoute: HomeBackendPageRoute,
-  HomeCoursesCreateRoute: HomeCoursesCreateRoute,
-  HomeCoursesPageRoute: HomeCoursesPageRoute,
-  HomeInboxPageRoute: HomeInboxPageRoute,
-  HomeUsersPageRoute: HomeUsersPageRoute,
-  HomeCoursesDeleteCourseIdRoute: HomeCoursesDeleteCourseIdRoute,
-  HomeCoursesEditCourseIdRoute: HomeCoursesEditCourseIdRoute,
-}
-
-const HomeRouteWithChildren = HomeRoute._addFileChildren(HomeRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  HomeRoute: HomeRouteWithChildren,
+  HomeRoute: HomeRoute,
+  DashboardAssignmentsPageRoute: DashboardAssignmentsPageRoute,
+  DashboardBackendPageRoute: DashboardBackendPageRoute,
+  DashboardCoursesCreateRoute: DashboardCoursesCreateRoute,
+  DashboardCoursesPageRoute: DashboardCoursesPageRoute,
+  DashboardInboxPageRoute: DashboardInboxPageRoute,
+  DashboardUsersPageRoute: DashboardUsersPageRoute,
+  DashboardCoursesDeleteCourseIdRoute: DashboardCoursesDeleteCourseIdRoute,
+  DashboardCoursesEditCourseIdRoute: DashboardCoursesEditCourseIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

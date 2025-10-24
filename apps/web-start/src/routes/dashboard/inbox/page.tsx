@@ -1,17 +1,15 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import LinkBar from '../../Components/LinkBar';
 
-export const Route = createFileRoute('/home/assignments/page')({
-  component: Assignments,
+export const Route = createFileRoute('/dashboard/inbox/page')({
+  component: Inbox,
 });
 
-export default function Assignments() {
+export default function Inbox() {
     return (
-
         <div className='content'>
             <LinkBar />
-      
-            <div>Assignments</div>
+            <div>Inbox</div>
         </div>
     );
 }
