@@ -14,8 +14,11 @@ import { Route as HomePageRouteImport } from './routes/home/page'
 import { Route as HomeUsersPageRouteImport } from './routes/home/users/page'
 import { Route as HomeInboxPageRouteImport } from './routes/home/inbox/page'
 import { Route as HomeCoursesPageRouteImport } from './routes/home/courses/page'
+import { Route as HomeCoursesCreateRouteImport } from './routes/home/courses/create'
 import { Route as HomeBackendPageRouteImport } from './routes/home/backend/page'
 import { Route as HomeAssignmentsPageRouteImport } from './routes/home/assignments/page'
+import { Route as HomeCoursesEditCourseIdRouteImport } from './routes/home/courses/edit/$courseId'
+import { Route as HomeCoursesDeleteCourseIdRouteImport } from './routes/home/courses/delete/$courseId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -42,6 +45,11 @@ const HomeCoursesPageRoute = HomeCoursesPageRouteImport.update({
   path: '/home/courses/page',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HomeCoursesCreateRoute = HomeCoursesCreateRouteImport.update({
+  id: '/home/courses/create',
+  path: '/home/courses/create',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HomeBackendPageRoute = HomeBackendPageRouteImport.update({
   id: '/home/backend/page',
   path: '/home/backend/page',
@@ -52,24 +60,41 @@ const HomeAssignmentsPageRoute = HomeAssignmentsPageRouteImport.update({
   path: '/home/assignments/page',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HomeCoursesEditCourseIdRoute = HomeCoursesEditCourseIdRouteImport.update({
+  id: '/home/courses/edit/$courseId',
+  path: '/home/courses/edit/$courseId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeCoursesDeleteCourseIdRoute =
+  HomeCoursesDeleteCourseIdRouteImport.update({
+    id: '/home/courses/delete/$courseId',
+    path: '/home/courses/delete/$courseId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/home/page': typeof HomePageRoute
   '/home/assignments/page': typeof HomeAssignmentsPageRoute
   '/home/backend/page': typeof HomeBackendPageRoute
+  '/home/courses/create': typeof HomeCoursesCreateRoute
   '/home/courses/page': typeof HomeCoursesPageRoute
   '/home/inbox/page': typeof HomeInboxPageRoute
   '/home/users/page': typeof HomeUsersPageRoute
+  '/home/courses/delete/$courseId': typeof HomeCoursesDeleteCourseIdRoute
+  '/home/courses/edit/$courseId': typeof HomeCoursesEditCourseIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/home/page': typeof HomePageRoute
   '/home/assignments/page': typeof HomeAssignmentsPageRoute
   '/home/backend/page': typeof HomeBackendPageRoute
+  '/home/courses/create': typeof HomeCoursesCreateRoute
   '/home/courses/page': typeof HomeCoursesPageRoute
   '/home/inbox/page': typeof HomeInboxPageRoute
   '/home/users/page': typeof HomeUsersPageRoute
+  '/home/courses/delete/$courseId': typeof HomeCoursesDeleteCourseIdRoute
+  '/home/courses/edit/$courseId': typeof HomeCoursesEditCourseIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,9 +102,12 @@ export interface FileRoutesById {
   '/home/page': typeof HomePageRoute
   '/home/assignments/page': typeof HomeAssignmentsPageRoute
   '/home/backend/page': typeof HomeBackendPageRoute
+  '/home/courses/create': typeof HomeCoursesCreateRoute
   '/home/courses/page': typeof HomeCoursesPageRoute
   '/home/inbox/page': typeof HomeInboxPageRoute
   '/home/users/page': typeof HomeUsersPageRoute
+  '/home/courses/delete/$courseId': typeof HomeCoursesDeleteCourseIdRoute
+  '/home/courses/edit/$courseId': typeof HomeCoursesEditCourseIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -88,27 +116,36 @@ export interface FileRouteTypes {
     | '/home/page'
     | '/home/assignments/page'
     | '/home/backend/page'
+    | '/home/courses/create'
     | '/home/courses/page'
     | '/home/inbox/page'
     | '/home/users/page'
+    | '/home/courses/delete/$courseId'
+    | '/home/courses/edit/$courseId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/home/page'
     | '/home/assignments/page'
     | '/home/backend/page'
+    | '/home/courses/create'
     | '/home/courses/page'
     | '/home/inbox/page'
     | '/home/users/page'
+    | '/home/courses/delete/$courseId'
+    | '/home/courses/edit/$courseId'
   id:
     | '__root__'
     | '/'
     | '/home/page'
     | '/home/assignments/page'
     | '/home/backend/page'
+    | '/home/courses/create'
     | '/home/courses/page'
     | '/home/inbox/page'
     | '/home/users/page'
+    | '/home/courses/delete/$courseId'
+    | '/home/courses/edit/$courseId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -116,9 +153,12 @@ export interface RootRouteChildren {
   HomePageRoute: typeof HomePageRoute
   HomeAssignmentsPageRoute: typeof HomeAssignmentsPageRoute
   HomeBackendPageRoute: typeof HomeBackendPageRoute
+  HomeCoursesCreateRoute: typeof HomeCoursesCreateRoute
   HomeCoursesPageRoute: typeof HomeCoursesPageRoute
   HomeInboxPageRoute: typeof HomeInboxPageRoute
   HomeUsersPageRoute: typeof HomeUsersPageRoute
+  HomeCoursesDeleteCourseIdRoute: typeof HomeCoursesDeleteCourseIdRoute
+  HomeCoursesEditCourseIdRoute: typeof HomeCoursesEditCourseIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -158,6 +198,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeCoursesPageRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/home/courses/create': {
+      id: '/home/courses/create'
+      path: '/home/courses/create'
+      fullPath: '/home/courses/create'
+      preLoaderRoute: typeof HomeCoursesCreateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/home/backend/page': {
       id: '/home/backend/page'
       path: '/home/backend/page'
@@ -172,6 +219,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeAssignmentsPageRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/home/courses/edit/$courseId': {
+      id: '/home/courses/edit/$courseId'
+      path: '/home/courses/edit/$courseId'
+      fullPath: '/home/courses/edit/$courseId'
+      preLoaderRoute: typeof HomeCoursesEditCourseIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home/courses/delete/$courseId': {
+      id: '/home/courses/delete/$courseId'
+      path: '/home/courses/delete/$courseId'
+      fullPath: '/home/courses/delete/$courseId'
+      preLoaderRoute: typeof HomeCoursesDeleteCourseIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -180,9 +241,12 @@ const rootRouteChildren: RootRouteChildren = {
   HomePageRoute: HomePageRoute,
   HomeAssignmentsPageRoute: HomeAssignmentsPageRoute,
   HomeBackendPageRoute: HomeBackendPageRoute,
+  HomeCoursesCreateRoute: HomeCoursesCreateRoute,
   HomeCoursesPageRoute: HomeCoursesPageRoute,
   HomeInboxPageRoute: HomeInboxPageRoute,
   HomeUsersPageRoute: HomeUsersPageRoute,
+  HomeCoursesDeleteCourseIdRoute: HomeCoursesDeleteCourseIdRoute,
+  HomeCoursesEditCourseIdRoute: HomeCoursesEditCourseIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

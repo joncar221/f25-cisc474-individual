@@ -1,14 +1,34 @@
-import { Link } from './links/entities/link.entity';
+export {
+  CourseCreateIn,
+  CourseOut,
+  CourseRef,
+  CourseUpdateIn,
+  CoursesListFilter,
+} from './courses';
+export {
+  UserRef,
+  UserOut,
+  UserCreateIn,
+  UserUpdateIn,
+  UsersListFilter,
+} from './users';
+export {
+  AssignmentCreateIn,
+  AssignmentOut,
+  AssignmentRef,
+  AssignmentUpdateIn,
+  AssignmentsListFilter,
+} from './assignments';
 
-import { CreateLinkDto } from './links/dto/create-link.dto';
-import { UpdateLinkDto } from './links/dto/update-link.dto';
-
-export const links = {
-  dto: {
-    CreateLinkDto,
-    UpdateLinkDto,
-  },
-  entities: {
-    Link,
-  },
-};
+export {
+  AuthenticationOut,
+  AuthenticationCreateIn,
+  AuthenticationUpdateIn,
+} from './authentications';
+export { RoleCreateIn, RoleOut, RoleUpdateIn, RoleType } from './roles';
+export {
+  SubmissionCreateIn,
+  SubmissionOut,
+  SubmissionUpdateIn,
+  SubmissionsListFilter,
+} from './submissions';

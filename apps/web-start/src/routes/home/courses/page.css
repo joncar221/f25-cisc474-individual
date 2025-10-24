@@ -6,3 +6,25 @@
     align-items: center;
     flex-direction: column;
 }
+
+.createButton {
+    background-color: darkred;
+    padding: 2px;
+    margin: 2px;
+    border-radius: 2px;
+    color: white;
+    height: 5vh;
+    width: 30vh;
+    text-align: center;
+}
+
+.changeButton {
+    background-color: darkred;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 2px;
+    color: white;
+    height: 5vh;
+    width: 20vh;
+    text-align: center;
+}
