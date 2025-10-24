@@ -21,45 +21,58 @@ model User {
   courses           Course[]         @relation("Instructors")
   registeredCourses Registered[]
   submissions       Submission[]
+  authentications    Authentication[]
+}
+
+model Authentication {
+  id         String   @id @default(uuid())
+  userId     String
+  provider   String
+  providerId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([provider, providerId])
 }
 
 model Course {
-  id            String        @id @default(cuid())
-  title         String        @unique
-  description   String?
-  assignments   Assignment[]
-  instructor    User?         @relation("Instructors", fields: [instructorId], references: [id])
-  instructorId  String?
-  students      Registered[]
+  id           String       @id @default(cuid())
+  title        String       @unique
+  description  String?
+  assignments  Assignment[]
+  instructor   User?        @relation("Instructors", fields: [instructorId], references: [id])
+  instructorId String?
+  students     Registered[]
 }
 
 model Registered {
-  id            String         @id @default(cuid())
-  student       User?          @relation(fields: [studentId], references: [id])
-  studentId     String?
-  course        Course?        @relation(fields: [courseId], references: [id])
-  courseId      String?
+  id        String  @id @default(cuid())
+  student   User?   @relation(fields: [studentId], references: [id])
+  studentId String?
+  course    Course? @relation(fields: [courseId], references: [id])
+  courseId  String?
 }
 
 model Assignment {
-  id          String          @id @default(cuid())
-  title       String          @unique
+  id          String       @id @default(cuid())
+  title       String       @unique
   description String?
   submissions Submission[]
-  course      Course          @relation(fields: [courseId], references: [id])
+  course      Course       @relation(fields: [courseId], references: [id])
   courseId    String
 }
 
 model Submission {
-  id          String  @id @default(cuid())
-  title       String  @unique
-  submission  String
-  grade       Int
-  feedback    String?
-  assignment  Assignment  @relation(fields: [assignmentId], references: [id])
-  assignmentId  String
-  student       User?          @relation(fields: [studentId], references: [id])
-  studentId     String?
+  id           String     @id @default(cuid())
+  title        String     @unique
+  submission   String
+  grade        Int
+  feedback     String?
+  assignment   Assignment @relation(fields: [assignmentId], references: [id])
+  assignmentId String
+  student      User?      @relation(fields: [studentId], references: [id])
+  studentId    String?
 }
 
 enum Role {

@@ -4,7 +4,7 @@ function LinkBar() {
     return (
         <div className='LinkBar'>
                   <div className='link'>
-                      <Link to={'/home/page'}>HomePage</Link>
+                      <Link to={'/home'}>HomePage</Link>
                   </div>
                   <div className='link'>
                       <Link to={'/home/courses/page'}>Courses</Link>

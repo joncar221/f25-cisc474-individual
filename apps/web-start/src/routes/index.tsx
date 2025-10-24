@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import './page.css';
+import LoginButton from '../components/LoginButton';
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -10,13 +11,8 @@ function RouteComponent() {
         <div >
             <main >
                 <h1>Login Page</h1>
-                <div className="loginField">
-
-                </div>
-                
-                <div className="loginButton">
-                    <Link to={'/home/page'}>Home</Link>
-                </div>
+                <LoginButton />
+               <hr></hr>
                
 
                 

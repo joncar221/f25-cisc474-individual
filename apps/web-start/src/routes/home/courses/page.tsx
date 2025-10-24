@@ -27,6 +27,7 @@ async function CourseList() {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
+  
     return (
             <ul>
                 {data.map((course: any) => (
