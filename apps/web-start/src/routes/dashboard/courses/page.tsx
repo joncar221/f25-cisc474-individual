@@ -6,6 +6,7 @@ import './page.css';
 import { backendFetcher } from '../../../integrations/fetcher';
 import type { CourseOut } from '@repo/api';
 import { useApiQuery, useCurrentUser } from '../../../integrations/api';
+import { useAuth0 } from '@auth0/auth0-react';
 
   export const Route = createFileRoute('/dashboard/courses/page')({
     component: Courses,
@@ -14,6 +15,7 @@ import { useApiQuery, useCurrentUser } from '../../../integrations/api';
 
 function CourseList() {
     const { data: user } = useCurrentUser();
+    const {user: userInfo} = useAuth0();
   const query = useApiQuery<Array<CourseOut>>(['courses'], '/courses');
 
   const { data, refetch, error, showLoading } = query;
@@ -28,12 +30,15 @@ function CourseList() {
     return <div>No courses found.</div>;
   }
     return (
+        <div>
+          <h1>Welcome {userInfo?.name}. id: {user?.id}</h1>
             <ul>
                 {data.map((course: any) => (
                     <li key={course.id}>
                         <br></br>
                         <div>{course.title}</div>
                         <div>{course.description}</div>
+                        <div>{course.instructorId}</div>
                         <Link to="/dashboard/courses/edit/$courseId" params={{courseId: course.id}} className='changeButton'> Edit Course</Link>
                         
                         <Link to="/dashboard/courses/delete/$courseId" params={{courseId: course.id}} className='changeButton'> Delete Course</Link>
@@ -42,6 +47,7 @@ function CourseList() {
                     </li>
                 ))}
             </ul>
+        </div>
     )
 }
 
