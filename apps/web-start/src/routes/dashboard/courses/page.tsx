@@ -5,6 +5,7 @@ import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
 import './page.css';
 import { backendFetcher } from '../../../integrations/fetcher';
 import type { CourseOut } from '@repo/api';
+import { useApiQuery, useCurrentUser } from '../../../integrations/api';
 
 const coursesQueryOptions = {
     queryKey: ['courses'],
@@ -20,14 +21,20 @@ const coursesQueryOptions = {
 
 
 async function CourseList() {
-    const { data, refetch, error, isFetching } = useQuery(coursesQueryOptions);
+    const { data: user } = useCurrentUser();
+  const query = useApiQuery<Array<CourseOut>>(['courses'], '/courses');
 
-  if (isFetching) return <div>Loading...</div>;
+  const { data, refetch, error, showLoading } = query;
 
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-  
+
+  if (showLoading) return <div>Loading...</div>;
+
+  if (!data || data.length === 0) {
+    return <div>No courses found.</div>;
+  }
     return (
             <ul>
                 {data.map((course: any) => (

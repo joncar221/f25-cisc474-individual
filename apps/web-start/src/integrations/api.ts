@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL as string;
-const AUDIENCE = import.meta.env.AUTH0_AUDIENCE as string;
+const AUDIENCE = import.meta.env.VITE_AUTH0_AUDIENCE as string;
 
 type Json = Record<string, unknown> | Array<unknown>;
 
@@ -45,6 +45,7 @@ export function useApiClient() {
     init: RequestInit & { scope?: string } = {},
   ): Promise<T> => {
     const token = await getToken(init.scope);
+    console.log(BASE_URL+path);
     const res = await fetch(`${BASE_URL}${path}`, {
       ...init,
       headers: {
