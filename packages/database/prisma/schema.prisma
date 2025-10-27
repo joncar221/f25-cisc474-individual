@@ -17,7 +17,7 @@ model User {
   name              String?
   email             String?          @unique
   emailVerified     DateTime?
-  role              Role             @default(STUDENT)
+  role              Role             @default(INSTRUCTOR)
   courses           Course[]         @relation("Instructors")
   registeredCourses Registered[]
   submissions       Submission[]
