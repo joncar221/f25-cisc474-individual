@@ -1,8 +1,9 @@
-import { createFileRoute, useNavigate, useParams } from '@tanstack/react-router';
+import { createFileRoute, Link, useNavigate, useParams } from '@tanstack/react-router';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { CourseUpdateIn, CourseOut } from '@repo/api';
 import { useState } from 'react';
 import { backendFetcher, mutateBackend } from '../../../../integrations/fetcher';
+import { useApiMutation } from '../../../../integrations/api';
 
 export const Route = createFileRoute('/dashboard/courses/edit/$courseId')({
   component: RouteComponent,
@@ -16,16 +17,19 @@ function RouteComponent() {
     '',
   );
 
-  const queryClient = useQueryClient();
 
-  const mutation = useMutation({
-    mutationFn: (updateCourse: CourseUpdateIn) => {
-        return mutateBackend<CourseOut>(`/courses/${courseId}`, 'PATCH', updateCourse);
-      },
-      onSuccess: (data: CourseOut) => {
-        queryClient.setQueryData(['courses', data.id], data);
-      },
-  });
+  const queryClient = useQueryClient();
+  
+    const mutation = useApiMutation<CourseUpdateIn, CourseOut>({
+      endpoint: (variables) => ({
+        path: `/courses/${courseId}`,
+        method: 'PATCH',
+        onSuccess: (data: CourseOut) => {
+          queryClient.setQueryData(['courses', data.id], data);
+        },
+      }),
+      invalidateKeys: [['courses']],
+    });
 
   return (
     <div>
@@ -74,7 +78,7 @@ function RouteComponent() {
                 mutation.mutate({
                   title: newName,
                   description: newDescription,
-                  instructorId: newInstructorId,
+                  instructorId: newInstructorId || mutation.data?.instructorId,
                 });
               }}
             >
@@ -83,7 +87,7 @@ function RouteComponent() {
           </div>
           <hr></hr>
           <div className='changeButton'>
-            <a href="/dashboard/courses/page">Back to Courses</a>
+            <Link to="/dashboard/courses/page">Back to Courses</Link>
           </div>
         </>
       )}

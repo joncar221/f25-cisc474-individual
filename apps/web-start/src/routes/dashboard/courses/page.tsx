@@ -7,20 +7,12 @@ import { backendFetcher } from '../../../integrations/fetcher';
 import type { CourseOut } from '@repo/api';
 import { useApiQuery, useCurrentUser } from '../../../integrations/api';
 
-const coursesQueryOptions = {
-    queryKey: ['courses'],
-    queryFn: backendFetcher<Array<CourseOut>>('/courses'),
-    initialData: [],
-  };
-  
   export const Route = createFileRoute('/dashboard/courses/page')({
     component: Courses,
-    loader: ({ context: { queryClient } }) =>
-      queryClient.ensureQueryData(coursesQueryOptions),
   });
 
 
-async function CourseList() {
+function CourseList() {
     const { data: user } = useCurrentUser();
   const query = useApiQuery<Array<CourseOut>>(['courses'], '/courses');
 

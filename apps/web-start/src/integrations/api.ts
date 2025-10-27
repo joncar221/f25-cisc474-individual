@@ -45,7 +45,6 @@ export function useApiClient() {
     init: RequestInit & { scope?: string } = {},
   ): Promise<T> => {
     const token = await getToken(init.scope);
-    console.log(BASE_URL+path);
     const res = await fetch(`${BASE_URL}${path}`, {
       ...init,
       headers: {
